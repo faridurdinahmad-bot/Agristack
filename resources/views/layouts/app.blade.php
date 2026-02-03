@@ -38,6 +38,7 @@
                                 <a href="{{ route('app.inventory.products-list') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📦 Inventory</a>
                                 <a href="{{ route('app.people.roles') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">👥 People</a>
                                 <a href="{{ route('app.sales.add-sale') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">💰 Sales</a>
+                                <a href="{{ route('app.purchase.add-purchase') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🛒 Purchase</a>
                                 <a href="{{ route('app.expense.categories') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">💸 Expense</a>
                                 <a href="{{ route('app.hr.employees') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🧑‍💼 HR &amp; Payroll</a>
                                 <a href="{{ route('app.utilities.bills') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🔌 Utilities</a>
@@ -45,6 +46,13 @@
                                 <a href="{{ route('app.reports.stock') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📈 Reports</a>
                                 <a href="{{ route('app.sync.website') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🔄 Sync</a>
                                 <a href="{{ route('app.settings.business') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">⚙️ Settings</a>
+                                <div class="border-t border-slate-200 dark:border-slate-600 my-1"></div>
+                                <a href="{{ route('app.analytics') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📈 Analytics</a>
+                                <a href="{{ route('app.documents') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📑 Documents</a>
+                                <a href="{{ route('app.notifications') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🔔 Notifications</a>
+                                <a href="{{ route('app.audit-logs') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📜 Audit / Logs</a>
+                                <a href="{{ route('app.support') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🆘 Support</a>
+                                <a href="{{ route('app.backups') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">💾 Backups</a>
                             </div>
                         </details>
                         <h1 class="text-lg font-semibold text-slate-900 dark:text-white truncate">

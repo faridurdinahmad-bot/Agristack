@@ -69,6 +69,22 @@ $current = fn($name) => request()->routeIs($name);
                 </ul>
             </details>
 
+            {{-- Purchase --}}
+            <details class="group" {{ $current('app.purchase.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">🛒</span>
+                    Purchase
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.purchase.add-purchase') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.purchase.add-purchase') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">➕ Add Purchase</a></li>
+                    <li><a href="{{ route('app.purchase.list') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.purchase.list') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📋 Purchase List</a></li>
+                    <li><a href="{{ route('app.purchase.return') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.purchase.return') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">↩️ Purchase Return</a></li>
+                    <li><a href="{{ route('app.purchase.quotations') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.purchase.quotations') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📄 Purchase Quotations</a></li>
+                    <li><a href="{{ route('app.purchase.quotations-list') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.purchase.quotations-list') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📋 Purchase Quotations List</a></li>
+                </ul>
+            </details>
+
             {{-- Expense --}}
             <details class="group" {{ $current('app.expense.*') ? 'open' : '' }}>
                 <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
@@ -166,6 +182,126 @@ $current = fn($name) => request()->routeIs($name);
                     <li><a href="{{ route('app.settings.barcode') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.settings.barcode') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📊 Barcode Settings</a></li>
                     <li><a href="{{ route('app.settings.printers') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.settings.printers') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🖨️ Printers</a></li>
                     <li><a href="{{ route('app.settings.tax-rates') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.settings.tax-rates') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📋 Tax Rates</a></li>
+                </ul>
+            </details>
+
+            {{-- Analytics --}}
+            <details class="group" {{ $current('app.analytics.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">📈</span>
+                    Analytics
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.analytics.overview') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.overview') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🎯 Overview</a></li>
+                    <li><a href="{{ route('app.analytics.sales-analytics') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.sales-analytics') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💵 Sales Analytics</a></li>
+                    <li><a href="{{ route('app.analytics.purchase-analytics') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.purchase-analytics') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🛒 Purchase Analytics</a></li>
+                    <li><a href="{{ route('app.analytics.inventory-analytics') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.inventory-analytics') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📦 Inventory Analytics</a></li>
+                    <li><a href="{{ route('app.analytics.expense-analytics') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.expense-analytics') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💸 Expense Analytics</a></li>
+                    <li><a href="{{ route('app.analytics.profit-loss-analytics') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.profit-loss-analytics') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📊 Profit &amp; Loss Analytics</a></li>
+                    <li><a href="{{ route('app.analytics.charts-graphs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.charts-graphs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📉 Charts &amp; Graphs</a></li>
+                    <li><a href="{{ route('app.analytics.trends-insights') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.analytics.trends-insights') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💡 Trends / Insights</a></li>
+                </ul>
+            </details>
+
+            {{-- Documents --}}
+            <details class="group" {{ $current('app.documents.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">📑</span>
+                    Documents
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.documents.all') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.all') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📂 All Documents</a></li>
+                    <li><a href="{{ route('app.documents.invoices') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.invoices') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🧾 Invoices</a></li>
+                    <li><a href="{{ route('app.documents.quotations') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.quotations') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📃 Quotations</a></li>
+                    <li><a href="{{ route('app.documents.purchase-orders') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.purchase-orders') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📋 Purchase Orders</a></li>
+                    <li><a href="{{ route('app.documents.delivery-notes') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.delivery-notes') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🚚 Delivery Notes</a></li>
+                    <li><a href="{{ route('app.documents.receipts') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.receipts') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💳 Receipts</a></li>
+                    <li><a href="{{ route('app.documents.uploaded-files') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.uploaded-files') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📤 Uploaded Files</a></li>
+                    <li><a href="{{ route('app.documents.templates') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.templates') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📑 Document Templates</a></li>
+                    <li><a href="{{ route('app.documents.archived') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.documents.archived') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📁 Archived Documents</a></li>
+                </ul>
+            </details>
+
+            {{-- Notifications --}}
+            <details class="group" {{ $current('app.notifications.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">🔔</span>
+                    Notifications
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.notifications.all') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.all') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📬 All Notifications</a></li>
+                    <li><a href="{{ route('app.notifications.system') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.system') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🖥️ System Notifications</a></li>
+                    <li><a href="{{ route('app.notifications.sales-alerts') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.sales-alerts') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💰 Sales Alerts</a></li>
+                    <li><a href="{{ route('app.notifications.purchase-alerts') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.purchase-alerts') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🛒 Purchase Alerts</a></li>
+                    <li><a href="{{ route('app.notifications.inventory-alerts') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.inventory-alerts') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📦 Inventory Alerts</a></li>
+                    <li><a href="{{ route('app.notifications.payment-reminders') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.payment-reminders') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💳 Payment Reminders</a></li>
+                    <li><a href="{{ route('app.notifications.read') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.read') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">✔️ Read Notifications</a></li>
+                    <li><a href="{{ route('app.notifications.settings') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.notifications.settings') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔧 Notification Settings</a></li>
+                </ul>
+            </details>
+
+            {{-- Audit / Logs --}}
+            <details class="group" {{ $current('app.audit-logs.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">📜</span>
+                    Audit / Logs
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.audit-logs.activity') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.activity') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📋 Activity Logs</a></li>
+                    <li><a href="{{ route('app.audit-logs.user-activity') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.user-activity') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">👤 User Activity</a></li>
+                    <li><a href="{{ route('app.audit-logs.login-history') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.login-history') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔐 Login History</a></li>
+                    <li><a href="{{ route('app.audit-logs.data-changes') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.data-changes') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📝 Data Changes Log</a></li>
+                    <li><a href="{{ route('app.audit-logs.system-logs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.system-logs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🖥️ System Logs</a></li>
+                    <li><a href="{{ route('app.audit-logs.error-logs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.error-logs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">⚠️ Error Logs</a></li>
+                    <li><a href="{{ route('app.audit-logs.access-logs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.audit-logs.access-logs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔑 Access Logs</a></li>
+                </ul>
+            </details>
+
+            {{-- Support --}}
+            <details class="group" {{ $current('app.support.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">🆘</span>
+                    Support
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.support.help-center') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.help-center') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">❓ Help Center</a></li>
+                    <li><a href="{{ route('app.support.faqs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.faqs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🗨️ FAQs</a></li>
+                    <li><a href="{{ route('app.support.user-guide') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.user-guide') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📖 User Guide</a></li>
+                    <li><a href="{{ route('app.support.tutorials') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.tutorials') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🎓 Tutorials</a></li>
+                    <li><a href="{{ route('app.support.contact') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.contact') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📧 Contact Support</a></li>
+                    <li><a href="{{ route('app.support.raise-ticket') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.raise-ticket') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🎫 Raise a Ticket</a></li>
+                    <li><a href="{{ route('app.support.ticket-history') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.ticket-history') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📑 Ticket History</a></li>
+                    <li><a href="{{ route('app.support.system-status') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.support.system-status') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🟢 System Status</a></li>
+                </ul>
+            </details>
+
+            {{-- Backups --}}
+            <details class="group" {{ $current('app.backups.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">💾</span>
+                    Backups
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.backups.dashboard') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.dashboard') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🗂️ Backup Dashboard</a></li>
+                    <li><a href="{{ route('app.backups.create') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.create') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">➕ Create Backup</a></li>
+                    <li><a href="{{ route('app.backups.history') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.history') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🕐 Backup History</a></li>
+                    <li><a href="{{ route('app.backups.download-full') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.download-full') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📥 Download Full Backup</a></li>
+                    <li><a href="{{ route('app.backups.download-database') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.download-database') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🗄️ Database as CSV / Excel</a></li>
+                    <li><a href="{{ route('app.backups.download-products') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.download-products') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📦 Products Data as CSV / Excel</a></li>
+                    <li><a href="{{ route('app.backups.download-sales') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.download-sales') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💰 Sales Data as CSV / Excel</a></li>
+                    <li><a href="{{ route('app.backups.download-purchase') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.download-purchase') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🛒 Purchase Data as CSV / Excel</a></li>
+                    <li><a href="{{ route('app.backups.download-json') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.download-json') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📑 JSON Exports</a></li>
+                    <li><a href="{{ route('app.backups.restore') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.restore') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔄 Restore Backup</a></li>
+                    <li><a href="{{ route('app.backups.auto-settings') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.auto-settings') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">⏰ Auto Backup Settings</a></li>
+                    <li><a href="{{ route('app.backups.storage') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.storage') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📁 Storage &amp; Locations</a></li>
+                    <li><a href="{{ route('app.backups.logs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.logs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📝 Backup Logs</a></li>
+                    <li><a href="{{ route('app.backups.permissions') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.backups.permissions') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔐 Backup Permissions</a></li>
                 </ul>
             </details>
         </nav>

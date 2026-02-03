@@ -7,12 +7,13 @@ Route::get('/', function () {
 });
 
 // Auth (UI only — POST redirects, no validation or persistence)
+// TEMPORARY: Login bypassed for design/testing - redirects directly to dashboard
+Route::get('/login', fn () => redirect()->route('app.dashboard'))->name('login');
+Route::post('/login', fn () => redirect()->route('app.dashboard'));
 Route::get('/register/vendor', fn () => view('auth.register-vendor'))->name('register.vendor');
 Route::post('/register/vendor', fn () => redirect()->route('app.dashboard'));
 Route::get('/register/staff', fn () => view('auth.register-staff'))->name('register.staff');
 Route::post('/register/staff', fn () => redirect()->route('app.dashboard'));
-Route::get('/login', fn () => view('auth.login'))->name('login');
-Route::post('/login', fn () => redirect()->route('app.dashboard'));
 
 // Legacy dashboard URL → redirect to app
 Route::get('/dashboard', fn () => redirect()->route('app.dashboard'))->name('dashboard');
@@ -46,6 +47,13 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/sales/return', fn () => view('dashboard.page', ['pageTitle' => 'Sales Return', 'pageIcon' => '↩️']))->name('sales.return');
     Route::get('/sales/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Quotations', 'pageIcon' => '📄']))->name('sales.quotations');
     Route::get('/sales/quotations-list', fn () => view('dashboard.page', ['pageTitle' => 'Quotations List', 'pageIcon' => '📋']))->name('sales.quotations-list');
+
+    // Purchase
+    Route::get('/purchase/add-purchase', fn () => view('dashboard.page', ['pageTitle' => 'Add Purchase', 'pageIcon' => '➕']))->name('purchase.add-purchase');
+    Route::get('/purchase/list', fn () => view('dashboard.page', ['pageTitle' => 'Purchase List', 'pageIcon' => '📋']))->name('purchase.list');
+    Route::get('/purchase/return', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Return', 'pageIcon' => '↩️']))->name('purchase.return');
+    Route::get('/purchase/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations', 'pageIcon' => '📄']))->name('purchase.quotations');
+    Route::get('/purchase/quotations-list', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations List', 'pageIcon' => '📋']))->name('purchase.quotations-list');
 
     // Expense
     Route::get('/expense/categories', fn () => view('dashboard.page', ['pageTitle' => 'Expense Categories', 'pageIcon' => '📁']))->name('expense.categories');
@@ -83,6 +91,78 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/settings/barcode', fn () => view('dashboard.page', ['pageTitle' => 'Barcode Settings', 'pageIcon' => '📊']))->name('settings.barcode');
     Route::get('/settings/printers', fn () => view('dashboard.page', ['pageTitle' => 'Printers', 'pageIcon' => '🖨️']))->name('settings.printers');
     Route::get('/settings/tax-rates', fn () => view('dashboard.page', ['pageTitle' => 'Tax Rates', 'pageIcon' => '📋']))->name('settings.tax-rates');
+
+    // Analytics (parent redirect for mobile menu)
+    Route::get('/analytics', fn () => redirect()->route('app.analytics.overview'))->name('analytics');
+    Route::get('/analytics/overview', fn () => view('dashboard.page', ['pageTitle' => 'Analytics Overview', 'pageIcon' => '📊']))->name('analytics.overview');
+    Route::get('/analytics/sales-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Sales Analytics', 'pageIcon' => '📊']))->name('analytics.sales-analytics');
+    Route::get('/analytics/purchase-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Analytics', 'pageIcon' => '📊']))->name('analytics.purchase-analytics');
+    Route::get('/analytics/inventory-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Inventory Analytics', 'pageIcon' => '📊']))->name('analytics.inventory-analytics');
+    Route::get('/analytics/expense-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Expense Analytics', 'pageIcon' => '📊']))->name('analytics.expense-analytics');
+    Route::get('/analytics/profit-loss-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Profit & Loss Analytics', 'pageIcon' => '📊']))->name('analytics.profit-loss-analytics');
+    Route::get('/analytics/charts-graphs', fn () => view('dashboard.page', ['pageTitle' => 'Charts & Graphs', 'pageIcon' => '📊']))->name('analytics.charts-graphs');
+    Route::get('/analytics/trends-insights', fn () => view('dashboard.page', ['pageTitle' => 'Trends / Insights', 'pageIcon' => '📊']))->name('analytics.trends-insights');
+
+    // Documents (parent redirect for mobile menu)
+    Route::get('/documents', fn () => redirect()->route('app.documents.all'))->name('documents');
+    Route::get('/documents/all', fn () => view('dashboard.page', ['pageTitle' => 'All Documents', 'pageIcon' => '📄']))->name('documents.all');
+    Route::get('/documents/invoices', fn () => view('dashboard.page', ['pageTitle' => 'Invoices', 'pageIcon' => '📄']))->name('documents.invoices');
+    Route::get('/documents/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Quotations', 'pageIcon' => '📄']))->name('documents.quotations');
+    Route::get('/documents/purchase-orders', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Orders', 'pageIcon' => '📄']))->name('documents.purchase-orders');
+    Route::get('/documents/delivery-notes', fn () => view('dashboard.page', ['pageTitle' => 'Delivery Notes', 'pageIcon' => '📄']))->name('documents.delivery-notes');
+    Route::get('/documents/receipts', fn () => view('dashboard.page', ['pageTitle' => 'Receipts', 'pageIcon' => '📄']))->name('documents.receipts');
+    Route::get('/documents/uploaded-files', fn () => view('dashboard.page', ['pageTitle' => 'Uploaded Files', 'pageIcon' => '📄']))->name('documents.uploaded-files');
+    Route::get('/documents/templates', fn () => view('dashboard.page', ['pageTitle' => 'Document Templates', 'pageIcon' => '📄']))->name('documents.templates');
+    Route::get('/documents/archived', fn () => view('dashboard.page', ['pageTitle' => 'Archived Documents', 'pageIcon' => '📄']))->name('documents.archived');
+
+    // Notifications (parent redirect for mobile menu)
+    Route::get('/notifications', fn () => redirect()->route('app.notifications.all'))->name('notifications');
+    Route::get('/notifications/all', fn () => view('dashboard.page', ['pageTitle' => 'All Notifications', 'pageIcon' => '🔔']))->name('notifications.all');
+    Route::get('/notifications/system', fn () => view('dashboard.page', ['pageTitle' => 'System Notifications', 'pageIcon' => '🔔']))->name('notifications.system');
+    Route::get('/notifications/sales-alerts', fn () => view('dashboard.page', ['pageTitle' => 'Sales Alerts', 'pageIcon' => '🔔']))->name('notifications.sales-alerts');
+    Route::get('/notifications/purchase-alerts', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Alerts', 'pageIcon' => '🔔']))->name('notifications.purchase-alerts');
+    Route::get('/notifications/inventory-alerts', fn () => view('dashboard.page', ['pageTitle' => 'Inventory Alerts', 'pageIcon' => '🔔']))->name('notifications.inventory-alerts');
+    Route::get('/notifications/payment-reminders', fn () => view('dashboard.page', ['pageTitle' => 'Payment Reminders', 'pageIcon' => '🔔']))->name('notifications.payment-reminders');
+    Route::get('/notifications/read', fn () => view('dashboard.page', ['pageTitle' => 'Read Notifications', 'pageIcon' => '🔔']))->name('notifications.read');
+    Route::get('/notifications/settings', fn () => view('dashboard.page', ['pageTitle' => 'Notification Settings', 'pageIcon' => '🔔']))->name('notifications.settings');
+
+    // Audit / Logs (parent redirect for mobile menu)
+    Route::get('/audit-logs', fn () => redirect()->route('app.audit-logs.activity'))->name('audit-logs');
+    Route::get('/audit-logs/activity', fn () => view('dashboard.page', ['pageTitle' => 'Activity Logs', 'pageIcon' => '📝']))->name('audit-logs.activity');
+    Route::get('/audit-logs/user-activity', fn () => view('dashboard.page', ['pageTitle' => 'User Activity', 'pageIcon' => '📝']))->name('audit-logs.user-activity');
+    Route::get('/audit-logs/login-history', fn () => view('dashboard.page', ['pageTitle' => 'Login History', 'pageIcon' => '📝']))->name('audit-logs.login-history');
+    Route::get('/audit-logs/data-changes', fn () => view('dashboard.page', ['pageTitle' => 'Data Changes Log', 'pageIcon' => '📝']))->name('audit-logs.data-changes');
+    Route::get('/audit-logs/system-logs', fn () => view('dashboard.page', ['pageTitle' => 'System Logs', 'pageIcon' => '📝']))->name('audit-logs.system-logs');
+    Route::get('/audit-logs/error-logs', fn () => view('dashboard.page', ['pageTitle' => 'Error Logs', 'pageIcon' => '📝']))->name('audit-logs.error-logs');
+    Route::get('/audit-logs/access-logs', fn () => view('dashboard.page', ['pageTitle' => 'Access Logs', 'pageIcon' => '📝']))->name('audit-logs.access-logs');
+
+    // Support (parent redirect for mobile menu)
+    Route::get('/support', fn () => redirect()->route('app.support.help-center'))->name('support');
+    Route::get('/support/help-center', fn () => view('dashboard.page', ['pageTitle' => 'Help Center', 'pageIcon' => '💬']))->name('support.help-center');
+    Route::get('/support/faqs', fn () => view('dashboard.page', ['pageTitle' => 'FAQs', 'pageIcon' => '💬']))->name('support.faqs');
+    Route::get('/support/user-guide', fn () => view('dashboard.page', ['pageTitle' => 'User Guide', 'pageIcon' => '💬']))->name('support.user-guide');
+    Route::get('/support/tutorials', fn () => view('dashboard.page', ['pageTitle' => 'Tutorials', 'pageIcon' => '💬']))->name('support.tutorials');
+    Route::get('/support/contact', fn () => view('dashboard.page', ['pageTitle' => 'Contact Support', 'pageIcon' => '💬']))->name('support.contact');
+    Route::get('/support/raise-ticket', fn () => view('dashboard.page', ['pageTitle' => 'Raise a Ticket', 'pageIcon' => '💬']))->name('support.raise-ticket');
+    Route::get('/support/ticket-history', fn () => view('dashboard.page', ['pageTitle' => 'Ticket History', 'pageIcon' => '💬']))->name('support.ticket-history');
+    Route::get('/support/system-status', fn () => view('dashboard.page', ['pageTitle' => 'System Status', 'pageIcon' => '💬']))->name('support.system-status');
+
+    // Backups (parent redirect for mobile menu)
+    Route::get('/backups', fn () => redirect()->route('app.backups.dashboard'))->name('backups');
+    Route::get('/backups/dashboard', fn () => view('dashboard.page', ['pageTitle' => 'Backup Dashboard', 'pageIcon' => '💾']))->name('backups.dashboard');
+    Route::get('/backups/create', fn () => view('dashboard.page', ['pageTitle' => 'Create Backup', 'pageIcon' => '💾']))->name('backups.create');
+    Route::get('/backups/history', fn () => view('dashboard.page', ['pageTitle' => 'Backup History', 'pageIcon' => '💾']))->name('backups.history');
+    Route::get('/backups/download-full', fn () => view('dashboard.page', ['pageTitle' => 'Download Full Backup', 'pageIcon' => '💾']))->name('backups.download-full');
+    Route::get('/backups/download-database', fn () => view('dashboard.page', ['pageTitle' => 'Download Database as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-database');
+    Route::get('/backups/download-products', fn () => view('dashboard.page', ['pageTitle' => 'Download Products Data as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-products');
+    Route::get('/backups/download-sales', fn () => view('dashboard.page', ['pageTitle' => 'Download Sales Data as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-sales');
+    Route::get('/backups/download-purchase', fn () => view('dashboard.page', ['pageTitle' => 'Download Purchase Data as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-purchase');
+    Route::get('/backups/download-json', fn () => view('dashboard.page', ['pageTitle' => 'Download JSON Exports', 'pageIcon' => '💾']))->name('backups.download-json');
+    Route::get('/backups/restore', fn () => view('dashboard.page', ['pageTitle' => 'Restore Backup', 'pageIcon' => '💾']))->name('backups.restore');
+    Route::get('/backups/auto-settings', fn () => view('dashboard.page', ['pageTitle' => 'Auto Backup Settings', 'pageIcon' => '💾']))->name('backups.auto-settings');
+    Route::get('/backups/storage', fn () => view('dashboard.page', ['pageTitle' => 'Storage & Locations', 'pageIcon' => '💾']))->name('backups.storage');
+    Route::get('/backups/logs', fn () => view('dashboard.page', ['pageTitle' => 'Backup Logs', 'pageIcon' => '💾']))->name('backups.logs');
+    Route::get('/backups/permissions', fn () => view('dashboard.page', ['pageTitle' => 'Backup Permissions', 'pageIcon' => '💾']))->name('backups.permissions');
 });
 
 // Footer / static pages (placeholder content for now)
