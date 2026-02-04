@@ -1,8 +1,8 @@
 @php
 $current = fn($name) => request()->routeIs($name);
 @endphp
-<aside class="hidden lg:flex lg:flex-shrink-0 lg:w-64 lg:flex-col">
-    <div class="flex flex-col flex-grow rounded-2xl m-4 mr-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-white/60 dark:border-slate-700/50 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 overflow-hidden">
+<aside class="app-sidebar flex fixed inset-y-0 left-0 z-[100] w-64 -translate-x-full transition-transform duration-300 ease-out lg:translate-x-0 lg:relative lg:inset-auto lg:z-auto lg:flex-shrink-0 lg:flex-col">
+    <div class="flex flex-col flex-grow lg:rounded-2xl m-0 lg:m-4 lg:mr-0 rounded-none border-r border-slate-200/80 dark:border-slate-700/50 lg:border border-white/60 dark:border-slate-700/50 bg-slate-50 dark:bg-slate-800/95 backdrop-blur-xl lg:bg-white/80 dark:lg:bg-slate-800/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 overflow-hidden min-h-full lg:min-h-0">
         <div class="flex items-center h-16 px-6 border-b border-slate-200/80 dark:border-slate-700/50">
             <a href="{{ route('app.dashboard') }}" class="text-lg font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent">
                 {{ config('app.name', 'AgriStack') }}

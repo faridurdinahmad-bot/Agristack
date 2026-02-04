@@ -16,45 +16,26 @@
 
     <style>
         .font-sans { font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif; }
+        /* Mobile sidebar overlay: show when checkbox is checked */
+        #mobile-sidebar-toggle:checked ~ .app-sidebar { transform: translateX(0); }
+        #mobile-sidebar-toggle:checked ~ .mobile-sidebar-backdrop { opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="font-sans antialiased min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-800 dark:text-slate-100">
-    <div class="flex flex-1">
+    <div class="flex flex-1 relative">
+        <input type="checkbox" id="mobile-sidebar-toggle" class="sr-only peer" aria-hidden="true" />
         @include('partials.app-sidebar')
+        <label for="mobile-sidebar-toggle" class="mobile-sidebar-backdrop fixed inset-0 z-[90] bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-label="Close menu"></label>
 
         {{-- Main content area --}}
-        <div class="flex flex-col flex-1 min-w-0">
+        <div class="flex flex-col flex-1 min-w-0 min-h-0">
             {{-- Top header bar --}}
             <header class="flex-shrink-0">
                 <div class="rounded-2xl m-4 ml-0 lg:ml-0 flex items-center justify-between h-16 px-4 sm:px-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-white/60 dark:border-slate-700/50 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50">
                     <div class="flex items-center gap-3 min-w-0">
-                        <details class="lg:hidden relative">
-                            <summary class="list-none cursor-pointer p-2 -ml-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 select-none">
-                                <span class="text-xl" aria-hidden="true">☰</span>
-                            </summary>
-                            <div class="absolute left-0 top-full mt-2 w-64 max-h-[80vh] overflow-y-auto rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xl z-50 py-2">
-                                <a href="{{ route('app.dashboard') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">📊 Dashboard</a>
-                                <div class="border-t border-slate-200 dark:border-slate-600 my-1"></div>
-                                <a href="{{ route('app.inventory.products-list') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📦 Inventory</a>
-                                <a href="{{ route('app.people.roles') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">👥 People</a>
-                                <a href="{{ route('app.sales.add-sale') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">💰 Sales</a>
-                                <a href="{{ route('app.purchase.add-purchase') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🛒 Purchase</a>
-                                <a href="{{ route('app.expense.categories') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">💸 Expense</a>
-                                <a href="{{ route('app.hr.employees') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🧑‍💼 HR &amp; Payroll</a>
-                                <a href="{{ route('app.utilities.bills') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🔌 Utilities</a>
-                                <a href="{{ route('app.finance.banks') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🏦 Finance</a>
-                                <a href="{{ route('app.reports.stock') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📈 Reports</a>
-                                <a href="{{ route('app.sync.website') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🔄 Sync</a>
-                                <a href="{{ route('app.settings.business') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">⚙️ Settings</a>
-                                <div class="border-t border-slate-200 dark:border-slate-600 my-1"></div>
-                                <a href="{{ route('app.analytics') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📈 Analytics</a>
-                                <a href="{{ route('app.documents') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📑 Documents</a>
-                                <a href="{{ route('app.notifications') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🔔 Notifications</a>
-                                <a href="{{ route('app.audit-logs') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">📜 Audit / Logs</a>
-                                <a href="{{ route('app.support') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">🆘 Support</a>
-                                <a href="{{ route('app.backups') }}" class="block px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">💾 Backups</a>
-                            </div>
-                        </details>
+                        <label for="mobile-sidebar-toggle" class="lg:hidden list-none cursor-pointer p-2 -ml-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 select-none" aria-label="Open menu">
+                            <span class="text-xl" aria-hidden="true">☰</span>
+                        </label>
                         <h1 class="text-lg font-semibold text-slate-900 dark:text-white truncate">
                             @yield('page-title', 'Dashboard')
                         </h1>
@@ -73,8 +54,8 @@
                 </div>
             </header>
 
-            {{-- Page content --}}
-            <main class="flex-1 px-4 pb-8 sm:px-6 lg:px-8">
+            {{-- Page content (no z-index so sidebar overlay stays on top on mobile) --}}
+            <main class="flex-1 px-4 pb-8 sm:px-6 lg:px-8 bg-transparent">
                 @yield('content')
             </main>
         </div>
