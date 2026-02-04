@@ -35,9 +35,26 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/inventory/print-labels', fn () => view('inventory.print-labels'))->name('inventory.print-labels');
 
     // People & Accounts
-    Route::get('/people/roles', fn () => view('dashboard.page', ['pageTitle' => 'Roles', 'pageIcon' => '🔐']))->name('people.roles');
-    Route::get('/people/users', fn () => view('dashboard.page', ['pageTitle' => 'Users', 'pageIcon' => '👤']))->name('people.users');
-    Route::get('/people/suppliers', fn () => view('dashboard.page', ['pageTitle' => 'Suppliers', 'pageIcon' => '🚚']))->name('people.suppliers');
+    Route::get('/people/roles', fn () => view('people.roles'))->name('people.roles');
+    Route::get('/people/roles/add', fn () => view('people.roles-form'))->name('people.roles-form');
+    Route::get('/people/users', fn () => view('people.users'))->name('people.users');
+    Route::get('/people/suppliers', fn () => view('people.suppliers'))->name('people.suppliers');
+    Route::get('/people/suppliers/add', fn () => view('people.suppliers-form'))->name('people.suppliers-form');
+    Route::get('/people/suppliers/view/{id}', fn ($id) => view('people.supplier-view', ['id' => $id]))->name('people.supplier-view');
+
+    // Approvals
+    Route::get('/approvals/vendors', fn () => view('approvals.list', ['pageTitle' => 'Vendor Approvals', 'approvalType' => 'vendors']))->name('approvals.vendors');
+    Route::get('/approvals/users', fn () => view('approvals.list', ['pageTitle' => 'User / Staff Approvals', 'approvalType' => 'users']))->name('approvals.users');
+    Route::get('/approvals/categories', fn () => view('approvals.list', ['pageTitle' => 'Category Approvals', 'approvalType' => 'categories']))->name('approvals.categories');
+    Route::get('/approvals/sub-categories', fn () => view('approvals.list', ['pageTitle' => 'Sub Category Approvals', 'approvalType' => 'sub-categories']))->name('approvals.sub-categories');
+    Route::get('/approvals/product-groups', fn () => view('approvals.list', ['pageTitle' => 'Product Group Approvals', 'approvalType' => 'product-groups']))->name('approvals.product-groups');
+    Route::get('/approvals/products', fn () => view('approvals.list', ['pageTitle' => 'Product Approvals', 'approvalType' => 'products', 'showType' => true]))->name('approvals.products');
+    Route::get('/approvals/roles', fn () => view('approvals.list', ['pageTitle' => 'Role Approvals', 'approvalType' => 'roles']))->name('approvals.roles');
+    Route::get('/approvals/price-changes', fn () => view('approvals.list', ['pageTitle' => 'Price Change Approvals', 'approvalType' => 'price-changes', 'showType' => true]))->name('approvals.price-changes');
+    Route::get('/approvals/stock-adjustments', fn () => view('approvals.list', ['pageTitle' => 'Stock Adjustment Approvals', 'approvalType' => 'stock-adjustments', 'showType' => true]))->name('approvals.stock-adjustments');
+    Route::get('/approvals/purchases', fn () => view('approvals.list', ['pageTitle' => 'Purchase Approvals', 'approvalType' => 'purchases', 'showType' => true]))->name('approvals.purchases');
+    Route::get('/approvals/returns', fn () => view('approvals.list', ['pageTitle' => 'Return Approvals', 'approvalType' => 'returns', 'showType' => true]))->name('approvals.returns');
+    Route::get('/approvals/view/{type}/{id}', fn ($type, $id) => view('approvals.view'))->name('approvals.view');
     Route::get('/people/supplier-groups', fn () => view('dashboard.page', ['pageTitle' => 'Supplier Groups', 'pageIcon' => '📁']))->name('people.supplier-groups');
     Route::get('/people/customers', fn () => view('dashboard.page', ['pageTitle' => 'Customers', 'pageIcon' => '🛒']))->name('people.customers');
     Route::get('/people/customer-groups', fn () => view('dashboard.page', ['pageTitle' => 'Customer Groups', 'pageIcon' => '📁']))->name('people.customer-groups');

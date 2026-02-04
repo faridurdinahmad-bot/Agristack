@@ -53,6 +53,28 @@ $current = fn($name) => request()->routeIs($name);
                 </ul>
             </details>
 
+            {{-- Approvals --}}
+            <details class="group" {{ $current('app.approvals.*') ? 'open' : '' }}>
+                <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
+                    <span aria-hidden="true">✅</span>
+                    Approvals
+                    <span class="ml-auto text-xs opacity-70 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
+                    <li><a href="{{ route('app.approvals.vendors') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.vendors') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🏪 Suppliers</a></li>
+                    <li><a href="{{ route('app.approvals.users') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.users') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">👤 Users / Staff</a></li>
+                    <li><a href="{{ route('app.approvals.categories') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.categories') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📁 Categories</a></li>
+                    <li><a href="{{ route('app.approvals.sub-categories') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.sub-categories') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📂 Sub Categories</a></li>
+                    <li><a href="{{ route('app.approvals.product-groups') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.product-groups') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🗂️ Product Groups</a></li>
+                    <li><a href="{{ route('app.approvals.products') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.products') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📦 Products</a></li>
+                    <li><a href="{{ route('app.approvals.roles') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.roles') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔐 Roles</a></li>
+                    <li><a href="{{ route('app.approvals.price-changes') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.price-changes') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">💰 Price Changes</a></li>
+                    <li><a href="{{ route('app.approvals.stock-adjustments') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.stock-adjustments') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📊 Stock Adjustments</a></li>
+                    <li><a href="{{ route('app.approvals.purchases') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.purchases') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🛒 Purchases</a></li>
+                    <li><a href="{{ route('app.approvals.returns') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.approvals.returns') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">↩️ Returns</a></li>
+                </ul>
+            </details>
+
             {{-- Sales --}}
             <details class="group" {{ $current('app.sales.*') ? 'open' : '' }}>
                 <summary class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 cursor-pointer list-none transition-colors">
