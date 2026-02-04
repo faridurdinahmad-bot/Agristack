@@ -25,7 +25,7 @@ Route::prefix('app')->name('app.')->group(function () {
     // Inventory
     Route::get('/inventory/products-list', fn () => view('dashboard.page', ['pageTitle' => 'Products List', 'pageIcon' => '📋']))->name('inventory.products-list');
     Route::get('/inventory/add-product', fn () => view('dashboard.page', ['pageTitle' => 'Add Product', 'pageIcon' => '➕']))->name('inventory.add-product');
-    Route::get('/inventory/categories', fn () => view('dashboard.page', ['pageTitle' => 'Categories', 'pageIcon' => '📁']))->name('inventory.categories');
+    Route::get('/inventory/categories', fn () => view('inventory.categories'))->name('inventory.categories');
     Route::get('/inventory/sub-categories', fn () => view('dashboard.page', ['pageTitle' => 'Sub Categories', 'pageIcon' => '📂']))->name('inventory.sub-categories');
     Route::get('/inventory/product-groups', fn () => view('dashboard.page', ['pageTitle' => 'Product Groups', 'pageIcon' => '🗂️']))->name('inventory.product-groups');
     Route::get('/inventory/brands', fn () => view('dashboard.page', ['pageTitle' => 'Brands', 'pageIcon' => '🏷️']))->name('inventory.brands');
