@@ -23,15 +23,16 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/', fn () => view('dashboard.index'))->name('dashboard');
 
     // Inventory
-    Route::get('/inventory/products-list', fn () => view('dashboard.page', ['pageTitle' => 'Products List', 'pageIcon' => '📋']))->name('inventory.products-list');
-    Route::get('/inventory/add-product', fn () => view('dashboard.page', ['pageTitle' => 'Add Product', 'pageIcon' => '➕']))->name('inventory.add-product');
+    Route::get('/inventory/products-list', fn () => view('inventory.products-list'))->name('inventory.products-list');
+    Route::get('/inventory/add-product', fn () => view('inventory.products'))->name('inventory.add-product');
     Route::get('/inventory/categories', fn () => view('inventory.categories'))->name('inventory.categories');
-    Route::get('/inventory/sub-categories', fn () => view('dashboard.page', ['pageTitle' => 'Sub Categories', 'pageIcon' => '📂']))->name('inventory.sub-categories');
-    Route::get('/inventory/product-groups', fn () => view('dashboard.page', ['pageTitle' => 'Product Groups', 'pageIcon' => '🗂️']))->name('inventory.product-groups');
-    Route::get('/inventory/brands', fn () => view('dashboard.page', ['pageTitle' => 'Brands', 'pageIcon' => '🏷️']))->name('inventory.brands');
-    Route::get('/inventory/units', fn () => view('dashboard.page', ['pageTitle' => 'Units', 'pageIcon' => '📐']))->name('inventory.units');
-    Route::get('/inventory/warranties', fn () => view('dashboard.page', ['pageTitle' => 'Warranties', 'pageIcon' => '🛡️']))->name('inventory.warranties');
-    Route::get('/inventory/print-labels', fn () => view('dashboard.page', ['pageTitle' => 'Print Labels', 'pageIcon' => '🏷️']))->name('inventory.print-labels');
+    Route::get('/inventory/sub-categories', fn () => view('inventory.sub-categories'))->name('inventory.sub-categories');
+    Route::get('/inventory/product-groups', fn () => view('inventory.product-groups'))->name('inventory.product-groups');
+    Route::get('/inventory/brands', fn () => view('inventory.brands'))->name('inventory.brands');
+    Route::get('/inventory/units', fn () => view('inventory.units'))->name('inventory.units');
+    Route::get('/inventory/packaging', fn () => view('inventory.packaging'))->name('inventory.packaging');
+    Route::get('/inventory/warranties', fn () => view('inventory.warranties'))->name('inventory.warranties');
+    Route::get('/inventory/print-labels', fn () => view('inventory.print-labels'))->name('inventory.print-labels');
 
     // People & Accounts
     Route::get('/people/roles', fn () => view('dashboard.page', ['pageTitle' => 'Roles', 'pageIcon' => '🔐']))->name('people.roles');

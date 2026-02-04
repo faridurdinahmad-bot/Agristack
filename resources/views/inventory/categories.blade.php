@@ -51,21 +51,26 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         @php
             $sampleCategories = [
-                ['nameEn' => 'Seeds', 'nameUr' => 'بیج'],
-                ['nameEn' => 'Fertilizers', 'nameUr' => 'کھادیں'],
-                ['nameEn' => 'Pesticides', 'nameUr' => 'کیڑے مار'],
-                ['nameEn' => 'Tools', 'nameUr' => 'اوزار'],
-                ['nameEn' => 'Livestock Feed', 'nameUr' => 'مویشیوں کا چارہ'],
-                ['nameEn' => 'Vegetables', 'nameUr' => 'سبزیاں'],
+                ['categoryNumber' => 'CAT-001', 'nameEn' => 'Seeds', 'nameUr' => 'بیج'],
+                ['categoryNumber' => 'CAT-002', 'nameEn' => 'Fertilizers', 'nameUr' => 'کھادیں'],
+                ['categoryNumber' => 'CAT-003', 'nameEn' => 'Pesticides', 'nameUr' => 'کیڑے مار'],
+                ['categoryNumber' => 'CAT-004', 'nameEn' => 'Tools', 'nameUr' => 'اوزار'],
+                ['categoryNumber' => 'CAT-005', 'nameEn' => 'Livestock Feed', 'nameUr' => 'مویشیوں کا چارہ'],
+                ['categoryNumber' => 'CAT-006', 'nameEn' => 'Vegetables', 'nameUr' => 'سبزیاں'],
             ];
         @endphp
         @foreach ($sampleCategories as $cat)
             <div class="rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-white/60 dark:border-slate-700/50 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 overflow-hidden">
                 <div class="p-5">
-                    <p class="font-medium text-slate-900 dark:text-white">{{ $cat['nameEn'] }}</p>
-                    @if($cat['nameUr'])
-                        <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400" dir="rtl">{{ $cat['nameUr'] }}</p>
-                    @endif
+                    <div class="flex items-start justify-between gap-2 mb-1">
+                        <div class="flex-1 min-w-0">
+                            <p class="font-medium text-slate-900 dark:text-white">{{ $cat['nameEn'] }}</p>
+                            @if($cat['nameUr'])
+                                <p class="mt-0.5 text-sm text-slate-500 dark:text-slate-400" dir="rtl">{{ $cat['nameUr'] }}</p>
+                            @endif
+                        </div>
+                        <span class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded shrink-0">{{ $cat['categoryNumber'] }}</span>
+                    </div>
                     <div class="mt-4 flex flex-wrap gap-2">
                         <button type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-600/50 transition-colors">View</button>
                         <button type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-600/50 transition-colors">Edit</button>
@@ -102,10 +107,17 @@
                     </div>
                 </div>
 
-                <div>
-                    <label for="category_slug" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Slug</label>
-                    <input type="text" id="category_slug" name="slug" readonly placeholder="tractor-parts" class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/70 px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 focus:ring-0 cursor-default" tabindex="-1" aria-readonly="true">
-                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Auto-generated from Category Name (English).</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="category_number" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Category Number</label>
+                        <input type="text" id="category_number" name="category_number" readonly placeholder="Auto generated" class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/70 px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 focus:ring-0 cursor-default" tabindex="-1" aria-readonly="true">
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Auto-generated category number.</p>
+                    </div>
+                    <div>
+                        <label for="category_slug" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Slug</label>
+                        <input type="text" id="category_slug" name="slug" readonly placeholder="tractor-parts" class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/70 px-4 py-2.5 text-sm text-slate-600 dark:text-slate-400 focus:ring-0 cursor-default" tabindex="-1" aria-readonly="true">
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Auto-generated from Category Name (English).</p>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
