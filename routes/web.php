@@ -55,15 +55,18 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/approvals/purchases', fn () => view('approvals.list', ['pageTitle' => 'Purchase Approvals', 'approvalType' => 'purchases', 'showType' => true]))->name('approvals.purchases');
     Route::get('/approvals/returns', fn () => view('approvals.list', ['pageTitle' => 'Return Approvals', 'approvalType' => 'returns', 'showType' => true]))->name('approvals.returns');
     Route::get('/approvals/view/{type}/{id}', fn ($type, $id) => view('approvals.view'))->name('approvals.view');
-    Route::get('/people/supplier-groups', fn () => view('dashboard.page', ['pageTitle' => 'Supplier Groups', 'pageIcon' => '📁']))->name('people.supplier-groups');
-    Route::get('/people/customers', fn () => view('dashboard.page', ['pageTitle' => 'Customers', 'pageIcon' => '🛒']))->name('people.customers');
-    Route::get('/people/customer-groups', fn () => view('dashboard.page', ['pageTitle' => 'Customer Groups', 'pageIcon' => '📁']))->name('people.customer-groups');
+    Route::get('/people/supplier-groups', fn () => view('people.supplier-groups'))->name('people.supplier-groups');
+    Route::get('/people/customers', fn () => view('people.customers'))->name('people.customers');
+    Route::get('/people/customers/view/{id}', fn ($id) => view('people.customer-view', ['id' => $id]))->name('people.customer-view');
+    Route::get('/people/customer-groups', fn () => view('people.customer-groups'))->name('people.customer-groups');
+    Route::get('/people/customer-groups/view/{id}', fn ($id) => view('people.customer-group-view', ['id' => $id]))->name('people.customer-group-view');
 
     // Sales
-    Route::get('/sales/add-sale', fn () => view('dashboard.page', ['pageTitle' => 'Add Sale', 'pageIcon' => '➕']))->name('sales.add-sale');
+    Route::get('/sales/add', fn () => view('sales.add'))->name('sales.add');
     Route::get('/sales/list', fn () => view('dashboard.page', ['pageTitle' => 'Sales List', 'pageIcon' => '📋']))->name('sales.list');
-    Route::get('/sales/return', fn () => view('dashboard.page', ['pageTitle' => 'Sales Return', 'pageIcon' => '↩️']))->name('sales.return');
+    Route::get('/sales/return', fn () => view('sales.return'))->name('sales.return');
     Route::get('/sales/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Quotations', 'pageIcon' => '📄']))->name('sales.quotations');
+    Route::get('/sales/quotation/add', fn () => view('sales.quotation-add'))->name('sales.quotation-add');
     Route::get('/sales/quotations-list', fn () => view('dashboard.page', ['pageTitle' => 'Quotations List', 'pageIcon' => '📋']))->name('sales.quotations-list');
 
     // Purchase
