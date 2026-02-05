@@ -30,6 +30,7 @@
                 <div id="more-actions-menu" data-more-actions-menu class="hidden absolute right-0 mt-1 w-56 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-lg z-10 py-1">
                     <a href="{{ route('app.sales.return') }}" class="block px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Switch to Sales Return</a>
                     <a href="{{ route('app.sales.quotation-add') }}" class="block px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Switch to Quotation</a>
+                    <button type="button" id="hold-invoice-btn" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Hold Invoice</button>
                 </div>
             </div>
         </div>
@@ -190,9 +191,18 @@
 (function() {
     var btn = document.getElementById('more-actions-btn');
     var menu = document.getElementById('more-actions-menu');
+    var holdInvoiceBtn = document.getElementById('hold-invoice-btn');
     if (btn && menu) {
         btn.addEventListener('click', function(e) { e.stopPropagation(); menu.classList.toggle('hidden'); });
         document.addEventListener('click', function() { menu.classList.add('hidden'); });
+    }
+    if (holdInvoiceBtn) {
+        holdInvoiceBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            menu.classList.add('hidden');
+            // Placeholder: UI only, no functionality
+        });
     }
 })();
 </script>

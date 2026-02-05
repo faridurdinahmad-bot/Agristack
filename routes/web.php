@@ -63,14 +63,14 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Sales
     Route::get('/sales/add', fn () => view('sales.add'))->name('sales.add');
-    Route::get('/sales/list', fn () => view('dashboard.page', ['pageTitle' => 'Sales List', 'pageIcon' => '📋']))->name('sales.list');
+    Route::get('/sales/list', fn () => view('sales.list'))->name('sales.list');
     Route::get('/sales/return', fn () => view('sales.return'))->name('sales.return');
-    Route::get('/sales/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Quotations', 'pageIcon' => '📄']))->name('sales.quotations');
+    Route::get('/sales/quotations', fn () => view('sales.hold-invoices-list'))->name('sales.quotations');
     Route::get('/sales/quotation/add', fn () => view('sales.quotation-add'))->name('sales.quotation-add');
-    Route::get('/sales/quotations-list', fn () => view('dashboard.page', ['pageTitle' => 'Quotations List', 'pageIcon' => '📋']))->name('sales.quotations-list');
+    Route::get('/sales/quotations-list', fn () => view('sales.quotations-list'))->name('sales.quotations-list');
 
     // Purchase
-    Route::get('/purchase/add-purchase', fn () => view('dashboard.page', ['pageTitle' => 'Add Purchase', 'pageIcon' => '➕']))->name('purchase.add-purchase');
+    Route::get('/purchase/add-purchase', fn () => view('purchase.add-purchase'))->name('purchase.add-purchase');
     Route::get('/purchase/list', fn () => view('dashboard.page', ['pageTitle' => 'Purchase List', 'pageIcon' => '📋']))->name('purchase.list');
     Route::get('/purchase/return', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Return', 'pageIcon' => '↩️']))->name('purchase.return');
     Route::get('/purchase/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations', 'pageIcon' => '📄']))->name('purchase.quotations');
