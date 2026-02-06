@@ -76,8 +76,8 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/purchase/orders', fn () => view('purchase.orders'))->name('purchase.orders');
     Route::get('/purchase/pending-orders', fn () => view('purchase.pending-orders'))->name('purchase.pending-orders');
     Route::get('/purchase/order-summary', fn () => view('purchase.order-summary'))->name('purchase.order-summary');
-    Route::get('/purchase/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations', 'pageIcon' => '📄']))->name('purchase.quotations');
-    Route::get('/purchase/quotations-list', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations List', 'pageIcon' => '📋']))->name('purchase.quotations-list');
+    Route::get('/purchase/quotations', fn () => view('purchase.quotations'))->name('purchase.quotations');
+    Route::get('/purchase/quotations-list', fn () => view('purchase.quotations-list'))->name('purchase.quotations-list');
 
     // Expense
     Route::get('/expense/categories', fn () => view('dashboard.page', ['pageTitle' => 'Expense Categories', 'pageIcon' => '📁']))->name('expense.categories');
