@@ -80,30 +80,30 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/purchase/quotations-list', fn () => view('purchase.quotations-list'))->name('purchase.quotations-list');
 
     // Expense
-    Route::get('/expense/categories', fn () => view('dashboard.page', ['pageTitle' => 'Expense Categories', 'pageIcon' => '📁']))->name('expense.categories');
-    Route::get('/expense/add', fn () => view('dashboard.page', ['pageTitle' => 'Add Expense', 'pageIcon' => '➕']))->name('expense.add');
-    Route::get('/expense/list', fn () => view('dashboard.page', ['pageTitle' => 'Expense List', 'pageIcon' => '📋']))->name('expense.list');
+    Route::get('/expense/categories', fn () => view('expense.categories'))->name('expense.categories');
+    Route::get('/expense/add', fn () => view('expense.add'))->name('expense.add');
+    Route::get('/expense/list', fn () => view('expense.list'))->name('expense.list');
 
     // HR & Payroll
-    Route::get('/hr/employees', fn () => view('dashboard.page', ['pageTitle' => 'Employees', 'pageIcon' => '👤']))->name('hr.employees');
-    Route::get('/hr/payroll', fn () => view('dashboard.page', ['pageTitle' => 'Payroll', 'pageIcon' => '💵']))->name('hr.payroll');
-    Route::get('/hr/advances', fn () => view('dashboard.page', ['pageTitle' => 'Advances', 'pageIcon' => '📤']))->name('hr.advances');
-    Route::get('/hr/attendance-leaves', fn () => view('dashboard.page', ['pageTitle' => 'Attendance & Leaves', 'pageIcon' => '📅']))->name('hr.attendance-leaves');
+    Route::get('/hr/employees', fn () => view('hr.employees'))->name('hr.employees');
+    Route::get('/hr/payroll', fn () => view('hr.payroll'))->name('hr.payroll');
+    Route::get('/hr/advances', fn () => view('hr.advances'))->name('hr.advances');
+    Route::get('/hr/attendance-leaves', fn () => view('hr.attendance-leaves'))->name('hr.attendance-leaves');
 
     // Utilities & Bills
-    Route::get('/utilities/bills', fn () => view('dashboard.page', ['pageTitle' => 'Utility Bills', 'pageIcon' => '📄']))->name('utilities.bills');
-    Route::get('/utilities/reminders', fn () => view('dashboard.page', ['pageTitle' => 'Bill Reminders', 'pageIcon' => '⏰']))->name('utilities.reminders');
+    Route::get('/utilities/bills', fn () => view('utilities.bills'))->name('utilities.bills');
+    Route::get('/utilities/reminders', fn () => view('utilities.reminders'))->name('utilities.reminders');
 
     // Finance
-    Route::get('/finance/banks', fn () => view('dashboard.page', ['pageTitle' => 'Banks', 'pageIcon' => '🏦']))->name('finance.banks');
-    Route::get('/finance/cash', fn () => view('dashboard.page', ['pageTitle' => 'Cash', 'pageIcon' => '💵']))->name('finance.cash');
-    Route::get('/finance/transactions', fn () => view('dashboard.page', ['pageTitle' => 'Transactions', 'pageIcon' => '📒']))->name('finance.transactions');
+    Route::get('/finance/banks', fn () => view('finance.banks'))->name('finance.banks');
+    Route::get('/finance/cash', fn () => view('finance.cash'))->name('finance.cash');
+    Route::get('/finance/transactions', fn () => view('finance.transactions'))->name('finance.transactions');
 
     // Reports
-    Route::get('/reports/stock', fn () => view('dashboard.page', ['pageTitle' => 'Stock Report', 'pageIcon' => '📦']))->name('reports.stock');
-    Route::get('/reports/profit-loss', fn () => view('dashboard.page', ['pageTitle' => 'Profit & Loss', 'pageIcon' => '📊']))->name('reports.profit-loss');
-    Route::get('/reports/ledger', fn () => view('dashboard.page', ['pageTitle' => 'Ledger Reports', 'pageIcon' => '📒']))->name('reports.ledger');
-    Route::get('/reports/business', fn () => view('dashboard.page', ['pageTitle' => 'Business Reports', 'pageIcon' => '📋']))->name('reports.business');
+    Route::get('/reports/stock', fn () => view('reports.stock'))->name('reports.stock');
+    Route::get('/reports/profit-loss', fn () => view('reports.profit-loss'))->name('reports.profit-loss');
+    Route::get('/reports/ledger', fn () => view('reports.ledger'))->name('reports.ledger');
+    Route::get('/reports/business', fn () => view('reports.business'))->name('reports.business');
 
     // Synchronization
     Route::get('/sync/website', fn () => view('dashboard.page', ['pageTitle' => 'Sync with Website', 'pageIcon' => '🌐']))->name('sync.website');
