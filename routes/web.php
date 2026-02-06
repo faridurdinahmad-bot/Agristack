@@ -182,20 +182,20 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Backups (parent redirect for mobile menu)
     Route::get('/backups', fn () => redirect()->route('app.backups.dashboard'))->name('backups');
-    Route::get('/backups/dashboard', fn () => view('dashboard.page', ['pageTitle' => 'Backup Dashboard', 'pageIcon' => '💾']))->name('backups.dashboard');
-    Route::get('/backups/create', fn () => view('dashboard.page', ['pageTitle' => 'Create Backup', 'pageIcon' => '💾']))->name('backups.create');
-    Route::get('/backups/history', fn () => view('dashboard.page', ['pageTitle' => 'Backup History', 'pageIcon' => '💾']))->name('backups.history');
-    Route::get('/backups/download-full', fn () => view('dashboard.page', ['pageTitle' => 'Download Full Backup', 'pageIcon' => '💾']))->name('backups.download-full');
-    Route::get('/backups/download-database', fn () => view('dashboard.page', ['pageTitle' => 'Download Database as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-database');
-    Route::get('/backups/download-products', fn () => view('dashboard.page', ['pageTitle' => 'Download Products Data as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-products');
-    Route::get('/backups/download-sales', fn () => view('dashboard.page', ['pageTitle' => 'Download Sales Data as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-sales');
-    Route::get('/backups/download-purchase', fn () => view('dashboard.page', ['pageTitle' => 'Download Purchase Data as CSV / Excel', 'pageIcon' => '💾']))->name('backups.download-purchase');
-    Route::get('/backups/download-json', fn () => view('dashboard.page', ['pageTitle' => 'Download JSON Exports', 'pageIcon' => '💾']))->name('backups.download-json');
-    Route::get('/backups/restore', fn () => view('dashboard.page', ['pageTitle' => 'Restore Backup', 'pageIcon' => '💾']))->name('backups.restore');
-    Route::get('/backups/auto-settings', fn () => view('dashboard.page', ['pageTitle' => 'Auto Backup Settings', 'pageIcon' => '💾']))->name('backups.auto-settings');
-    Route::get('/backups/storage', fn () => view('dashboard.page', ['pageTitle' => 'Storage & Locations', 'pageIcon' => '💾']))->name('backups.storage');
-    Route::get('/backups/logs', fn () => view('dashboard.page', ['pageTitle' => 'Backup Logs', 'pageIcon' => '💾']))->name('backups.logs');
-    Route::get('/backups/permissions', fn () => view('dashboard.page', ['pageTitle' => 'Backup Permissions', 'pageIcon' => '💾']))->name('backups.permissions');
+    Route::get('/backups/dashboard', fn () => view('backups.dashboard'))->name('backups.dashboard');
+    Route::get('/backups/create', fn () => view('backups.create'))->name('backups.create');
+    Route::get('/backups/history', fn () => view('backups.history'))->name('backups.history');
+    Route::get('/backups/download-full', fn () => view('backups.download-full'))->name('backups.download-full');
+    Route::get('/backups/download-database', fn () => view('backups.download-database'))->name('backups.download-database');
+    Route::get('/backups/download-products', fn () => view('backups.download-products'))->name('backups.download-products');
+    Route::get('/backups/download-sales', fn () => view('backups.download-sales'))->name('backups.download-sales');
+    Route::get('/backups/download-purchase', fn () => view('backups.download-purchase'))->name('backups.download-purchase');
+    Route::get('/backups/download-json', fn () => view('backups.download-json'))->name('backups.download-json');
+    Route::get('/backups/restore', fn () => view('backups.restore'))->name('backups.restore');
+    Route::get('/backups/auto-settings', fn () => view('backups.auto-settings'))->name('backups.auto-settings');
+    Route::get('/backups/storage', fn () => view('backups.storage'))->name('backups.storage');
+    Route::get('/backups/logs', fn () => view('backups.logs'))->name('backups.logs');
+    Route::get('/backups/permissions', fn () => view('backups.permissions'))->name('backups.permissions');
 });
 
 // Footer / static pages (placeholder content for now)
