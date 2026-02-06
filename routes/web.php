@@ -160,13 +160,13 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Audit / Logs (parent redirect for mobile menu)
     Route::get('/audit-logs', fn () => redirect()->route('app.audit-logs.activity'))->name('audit-logs');
-    Route::get('/audit-logs/activity', fn () => view('dashboard.page', ['pageTitle' => 'Activity Logs', 'pageIcon' => '📝']))->name('audit-logs.activity');
-    Route::get('/audit-logs/user-activity', fn () => view('dashboard.page', ['pageTitle' => 'User Activity', 'pageIcon' => '📝']))->name('audit-logs.user-activity');
-    Route::get('/audit-logs/login-history', fn () => view('dashboard.page', ['pageTitle' => 'Login History', 'pageIcon' => '📝']))->name('audit-logs.login-history');
-    Route::get('/audit-logs/data-changes', fn () => view('dashboard.page', ['pageTitle' => 'Data Changes Log', 'pageIcon' => '📝']))->name('audit-logs.data-changes');
-    Route::get('/audit-logs/system-logs', fn () => view('dashboard.page', ['pageTitle' => 'System Logs', 'pageIcon' => '📝']))->name('audit-logs.system-logs');
-    Route::get('/audit-logs/error-logs', fn () => view('dashboard.page', ['pageTitle' => 'Error Logs', 'pageIcon' => '📝']))->name('audit-logs.error-logs');
-    Route::get('/audit-logs/access-logs', fn () => view('dashboard.page', ['pageTitle' => 'Access Logs', 'pageIcon' => '📝']))->name('audit-logs.access-logs');
+    Route::get('/audit-logs/activity', fn () => view('audit-logs.activity'))->name('audit-logs.activity');
+    Route::get('/audit-logs/user-activity', fn () => view('audit-logs.user-activity'))->name('audit-logs.user-activity');
+    Route::get('/audit-logs/login-history', fn () => view('audit-logs.login-history'))->name('audit-logs.login-history');
+    Route::get('/audit-logs/data-changes', fn () => view('audit-logs.data-changes'))->name('audit-logs.data-changes');
+    Route::get('/audit-logs/system-logs', fn () => view('audit-logs.system-logs'))->name('audit-logs.system-logs');
+    Route::get('/audit-logs/error-logs', fn () => view('audit-logs.error-logs'))->name('audit-logs.error-logs');
+    Route::get('/audit-logs/access-logs', fn () => view('audit-logs.access-logs'))->name('audit-logs.access-logs');
 
     // Support (parent redirect for mobile menu)
     Route::get('/support', fn () => redirect()->route('app.support.help-center'))->name('support');
