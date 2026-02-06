@@ -137,15 +137,15 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Documents (parent redirect for mobile menu)
     Route::get('/documents', fn () => redirect()->route('app.documents.all'))->name('documents');
-    Route::get('/documents/all', fn () => view('dashboard.page', ['pageTitle' => 'All Documents', 'pageIcon' => '📄']))->name('documents.all');
-    Route::get('/documents/invoices', fn () => view('dashboard.page', ['pageTitle' => 'Invoices', 'pageIcon' => '📄']))->name('documents.invoices');
-    Route::get('/documents/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Quotations', 'pageIcon' => '📄']))->name('documents.quotations');
-    Route::get('/documents/purchase-orders', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Orders', 'pageIcon' => '📄']))->name('documents.purchase-orders');
-    Route::get('/documents/delivery-notes', fn () => view('dashboard.page', ['pageTitle' => 'Delivery Notes', 'pageIcon' => '📄']))->name('documents.delivery-notes');
-    Route::get('/documents/receipts', fn () => view('dashboard.page', ['pageTitle' => 'Receipts', 'pageIcon' => '📄']))->name('documents.receipts');
-    Route::get('/documents/uploaded-files', fn () => view('dashboard.page', ['pageTitle' => 'Uploaded Files', 'pageIcon' => '📄']))->name('documents.uploaded-files');
-    Route::get('/documents/templates', fn () => view('dashboard.page', ['pageTitle' => 'Document Templates', 'pageIcon' => '📄']))->name('documents.templates');
-    Route::get('/documents/archived', fn () => view('dashboard.page', ['pageTitle' => 'Archived Documents', 'pageIcon' => '📄']))->name('documents.archived');
+    Route::get('/documents/all', fn () => view('documents.all'))->name('documents.all');
+    Route::get('/documents/invoices', fn () => view('documents.invoices'))->name('documents.invoices');
+    Route::get('/documents/quotations', fn () => view('documents.quotations'))->name('documents.quotations');
+    Route::get('/documents/purchase-orders', fn () => view('documents.purchase-orders'))->name('documents.purchase-orders');
+    Route::get('/documents/delivery-notes', fn () => view('documents.delivery-notes'))->name('documents.delivery-notes');
+    Route::get('/documents/receipts', fn () => view('documents.receipts'))->name('documents.receipts');
+    Route::get('/documents/uploaded-files', fn () => view('documents.uploaded-files'))->name('documents.uploaded-files');
+    Route::get('/documents/templates', fn () => view('documents.templates'))->name('documents.templates');
+    Route::get('/documents/archived', fn () => view('documents.archived'))->name('documents.archived');
 
     // Notifications (parent redirect for mobile menu)
     Route::get('/notifications', fn () => redirect()->route('app.notifications.all'))->name('notifications');
