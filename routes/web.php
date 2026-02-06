@@ -149,14 +149,14 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Notifications (parent redirect for mobile menu)
     Route::get('/notifications', fn () => redirect()->route('app.notifications.all'))->name('notifications');
-    Route::get('/notifications/all', fn () => view('dashboard.page', ['pageTitle' => 'All Notifications', 'pageIcon' => '🔔']))->name('notifications.all');
-    Route::get('/notifications/system', fn () => view('dashboard.page', ['pageTitle' => 'System Notifications', 'pageIcon' => '🔔']))->name('notifications.system');
-    Route::get('/notifications/sales-alerts', fn () => view('dashboard.page', ['pageTitle' => 'Sales Alerts', 'pageIcon' => '🔔']))->name('notifications.sales-alerts');
-    Route::get('/notifications/purchase-alerts', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Alerts', 'pageIcon' => '🔔']))->name('notifications.purchase-alerts');
-    Route::get('/notifications/inventory-alerts', fn () => view('dashboard.page', ['pageTitle' => 'Inventory Alerts', 'pageIcon' => '🔔']))->name('notifications.inventory-alerts');
-    Route::get('/notifications/payment-reminders', fn () => view('dashboard.page', ['pageTitle' => 'Payment Reminders', 'pageIcon' => '🔔']))->name('notifications.payment-reminders');
-    Route::get('/notifications/read', fn () => view('dashboard.page', ['pageTitle' => 'Read Notifications', 'pageIcon' => '🔔']))->name('notifications.read');
-    Route::get('/notifications/settings', fn () => view('dashboard.page', ['pageTitle' => 'Notification Settings', 'pageIcon' => '🔔']))->name('notifications.settings');
+    Route::get('/notifications/all', fn () => view('notifications.all'))->name('notifications.all');
+    Route::get('/notifications/system', fn () => view('notifications.system'))->name('notifications.system');
+    Route::get('/notifications/sales-alerts', fn () => view('notifications.sales-alerts'))->name('notifications.sales-alerts');
+    Route::get('/notifications/purchase-alerts', fn () => view('notifications.purchase-alerts'))->name('notifications.purchase-alerts');
+    Route::get('/notifications/inventory-alerts', fn () => view('notifications.inventory-alerts'))->name('notifications.inventory-alerts');
+    Route::get('/notifications/payment-reminders', fn () => view('notifications.payment-reminders'))->name('notifications.payment-reminders');
+    Route::get('/notifications/read', fn () => view('notifications.read'))->name('notifications.read');
+    Route::get('/notifications/settings', fn () => redirect()->route('app.settings.notifications'))->name('notifications.settings');
 
     // Audit / Logs (parent redirect for mobile menu)
     Route::get('/audit-logs', fn () => redirect()->route('app.audit-logs.activity'))->name('audit-logs');
