@@ -170,14 +170,15 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Support (parent redirect for mobile menu)
     Route::get('/support', fn () => redirect()->route('app.support.help-center'))->name('support');
-    Route::get('/support/help-center', fn () => view('dashboard.page', ['pageTitle' => 'Help Center', 'pageIcon' => '💬']))->name('support.help-center');
-    Route::get('/support/faqs', fn () => view('dashboard.page', ['pageTitle' => 'FAQs', 'pageIcon' => '💬']))->name('support.faqs');
-    Route::get('/support/user-guide', fn () => view('dashboard.page', ['pageTitle' => 'User Guide', 'pageIcon' => '💬']))->name('support.user-guide');
-    Route::get('/support/tutorials', fn () => view('dashboard.page', ['pageTitle' => 'Tutorials', 'pageIcon' => '💬']))->name('support.tutorials');
-    Route::get('/support/contact', fn () => view('dashboard.page', ['pageTitle' => 'Contact Support', 'pageIcon' => '💬']))->name('support.contact');
-    Route::get('/support/raise-ticket', fn () => view('dashboard.page', ['pageTitle' => 'Raise a Ticket', 'pageIcon' => '💬']))->name('support.raise-ticket');
-    Route::get('/support/ticket-history', fn () => view('dashboard.page', ['pageTitle' => 'Ticket History', 'pageIcon' => '💬']))->name('support.ticket-history');
-    Route::get('/support/system-status', fn () => view('dashboard.page', ['pageTitle' => 'System Status', 'pageIcon' => '💬']))->name('support.system-status');
+    Route::get('/support/help-center', fn () => view('support.help-center'))->name('support.help-center');
+    Route::get('/support/faqs', fn () => view('support.faqs'))->name('support.faqs');
+    Route::get('/support/user-guide', fn () => view('support.user-guide'))->name('support.user-guide');
+    Route::get('/support/tutorials', fn () => view('support.tutorials'))->name('support.tutorials');
+    Route::get('/support/contact', fn () => view('support.contact'))->name('support.contact');
+    Route::get('/support/raise-ticket', fn () => view('support.raise-ticket'))->name('support.raise-ticket');
+    Route::get('/support/ticket-history', fn () => view('support.ticket-history'))->name('support.ticket-history');
+    Route::get('/support/tickets/{id}', fn ($id) => view('support.ticket-details', ['id' => $id]))->name('support.ticket-details');
+    Route::get('/support/system-status', fn () => view('support.system-status'))->name('support.system-status');
 
     // Backups (parent redirect for mobile menu)
     Route::get('/backups', fn () => redirect()->route('app.backups.dashboard'))->name('backups');
