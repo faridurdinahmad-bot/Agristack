@@ -126,14 +126,14 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Analytics (parent redirect for mobile menu)
     Route::get('/analytics', fn () => redirect()->route('app.analytics.overview'))->name('analytics');
-    Route::get('/analytics/overview', fn () => view('dashboard.page', ['pageTitle' => 'Analytics Overview', 'pageIcon' => '📊']))->name('analytics.overview');
-    Route::get('/analytics/sales-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Sales Analytics', 'pageIcon' => '📊']))->name('analytics.sales-analytics');
-    Route::get('/analytics/purchase-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Analytics', 'pageIcon' => '📊']))->name('analytics.purchase-analytics');
-    Route::get('/analytics/inventory-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Inventory Analytics', 'pageIcon' => '📊']))->name('analytics.inventory-analytics');
-    Route::get('/analytics/expense-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Expense Analytics', 'pageIcon' => '📊']))->name('analytics.expense-analytics');
-    Route::get('/analytics/profit-loss-analytics', fn () => view('dashboard.page', ['pageTitle' => 'Profit & Loss Analytics', 'pageIcon' => '📊']))->name('analytics.profit-loss-analytics');
-    Route::get('/analytics/charts-graphs', fn () => view('dashboard.page', ['pageTitle' => 'Charts & Graphs', 'pageIcon' => '📊']))->name('analytics.charts-graphs');
-    Route::get('/analytics/trends-insights', fn () => view('dashboard.page', ['pageTitle' => 'Trends / Insights', 'pageIcon' => '📊']))->name('analytics.trends-insights');
+    Route::get('/analytics/overview', fn () => view('analytics.overview'))->name('analytics.overview');
+    Route::get('/analytics/sales-analytics', fn () => view('analytics.sales'))->name('analytics.sales-analytics');
+    Route::get('/analytics/purchase-analytics', fn () => view('analytics.purchase'))->name('analytics.purchase-analytics');
+    Route::get('/analytics/inventory-analytics', fn () => view('analytics.inventory'))->name('analytics.inventory-analytics');
+    Route::get('/analytics/expense-analytics', fn () => view('analytics.expense'))->name('analytics.expense-analytics');
+    Route::get('/analytics/profit-loss-analytics', fn () => view('analytics.profit-loss'))->name('analytics.profit-loss-analytics');
+    Route::get('/analytics/charts-graphs', fn () => view('analytics.charts-graphs'))->name('analytics.charts-graphs');
+    Route::get('/analytics/trends-insights', fn () => view('analytics.trends-insights'))->name('analytics.trends-insights');
 
     // Documents (parent redirect for mobile menu)
     Route::get('/documents', fn () => redirect()->route('app.documents.all'))->name('documents');
