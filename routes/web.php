@@ -71,8 +71,11 @@ Route::prefix('app')->name('app.')->group(function () {
 
     // Purchase
     Route::get('/purchase/add-purchase', fn () => view('purchase.add-purchase'))->name('purchase.add-purchase');
-    Route::get('/purchase/list', fn () => view('dashboard.page', ['pageTitle' => 'Purchase List', 'pageIcon' => '📋']))->name('purchase.list');
-    Route::get('/purchase/return', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Return', 'pageIcon' => '↩️']))->name('purchase.return');
+    Route::get('/purchase/list', fn () => view('purchase.list'))->name('purchase.list');
+    Route::get('/purchase/return', fn () => view('purchase.return-list'))->name('purchase.return');
+    Route::get('/purchase/orders', fn () => view('purchase.orders'))->name('purchase.orders');
+    Route::get('/purchase/pending-orders', fn () => view('purchase.pending-orders'))->name('purchase.pending-orders');
+    Route::get('/purchase/order-summary', fn () => view('purchase.order-summary'))->name('purchase.order-summary');
     Route::get('/purchase/quotations', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations', 'pageIcon' => '📄']))->name('purchase.quotations');
     Route::get('/purchase/quotations-list', fn () => view('dashboard.page', ['pageTitle' => 'Purchase Quotations List', 'pageIcon' => '📋']))->name('purchase.quotations-list');
 

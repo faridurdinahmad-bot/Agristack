@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="max-w-6xl mx-auto p-6 space-y-6">
-    {{-- Page Header: Back (left), Title --}}
+    {{-- Page Header: Back (left), Title, More Actions (right) --}}
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
             <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
@@ -15,6 +15,22 @@
                 Back to Purchase List
             </a>
             <h1 class="text-2xl font-semibold text-slate-900 dark:text-white">Add Purchase</h1>
+            {{-- Mode badge (visible in Purchase Return mode) --}}
+            <span id="page-mode-badge" class="hidden inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">Purchase Return</span>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+            {{-- More Actions dropdown --}}
+            <div class="relative inline-block">
+                <button type="button" id="more-actions-btn" data-more-actions-trigger
+                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 border border-slate-200 dark:border-slate-600 transition-colors">
+                    More Actions
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="more-actions-menu" data-more-actions-menu class="hidden absolute right-0 mt-1 w-56 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-lg z-10 py-1">
+                    <button type="button" id="switch-purchase-return-btn" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Switch to Purchase Return</button>
+                    <button type="button" id="hold-purchase-btn" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50">Hold Purchase</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -78,6 +94,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            {{-- Purchase / Return Notes (always visible) --}}
+            <div id="purchase-notes-wrap" class="mt-5 pt-5 border-t border-slate-200 dark:border-slate-700">
+                <label for="purchase_notes" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Purchase / Return Notes</label>
+                <textarea id="purchase_notes" name="purchase_notes" rows="3" placeholder="Enter issue, reason, or reference for this purchase or return…"
+                    class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none resize-y"></textarea>
             </div>
         </div>
 
@@ -285,6 +307,50 @@
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+        });
+    }
+    
+    // More Actions dropdown (same as Add Sale)
+    var moreActionsBtn = document.getElementById('more-actions-btn');
+    var moreActionsMenu = document.getElementById('more-actions-menu');
+    if (moreActionsBtn && moreActionsMenu) {
+        moreActionsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            moreActionsMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', function() {
+            moreActionsMenu.classList.add('hidden');
+        });
+    }
+    var holdPurchaseBtn = document.getElementById('hold-purchase-btn');
+    var switchPurchaseReturnBtn = document.getElementById('switch-purchase-return-btn');
+    var pageModeBadge = document.getElementById('page-mode-badge');
+    var purchaseNotesWrap = document.getElementById('purchase-notes-wrap');
+    var isReturnMode = false;
+
+    if (holdPurchaseBtn) {
+        holdPurchaseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (moreActionsMenu) moreActionsMenu.classList.add('hidden');
+        });
+    }
+    if (switchPurchaseReturnBtn) {
+        switchPurchaseReturnBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (moreActionsMenu) moreActionsMenu.classList.add('hidden');
+            isReturnMode = !isReturnMode;
+            if (pageModeBadge) {
+                pageModeBadge.classList.toggle('hidden', !isReturnMode);
+            }
+            if (purchaseNotesWrap) {
+                if (isReturnMode) {
+                    purchaseNotesWrap.classList.add('ring-2', 'ring-amber-200', 'dark:ring-amber-500/30', 'bg-amber-50/30', 'dark:bg-amber-500/5', 'rounded-xl');
+                } else {
+                    purchaseNotesWrap.classList.remove('ring-2', 'ring-amber-200', 'dark:ring-amber-500/30', 'bg-amber-50/30', 'dark:bg-amber-500/5', 'rounded-xl');
+                }
+            }
         });
     }
     
