@@ -106,8 +106,10 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/reports/business', fn () => view('reports.business'))->name('reports.business');
 
     // Synchronization
-    Route::get('/sync/website', fn () => view('dashboard.page', ['pageTitle' => 'Sync with Website', 'pageIcon' => '🌐']))->name('sync.website');
-    Route::get('/sync/api', fn () => view('dashboard.page', ['pageTitle' => 'API Settings', 'pageIcon' => '🔗']))->name('sync.api');
+    Route::get('/sync/website', fn () => view('sync.website'))->name('sync.website');
+    Route::get('/sync/api', fn () => view('sync.api'))->name('sync.api');
+    Route::get('/sync/logs', fn () => view('sync.logs'))->name('sync.logs');
+    Route::get('/sync/schedule', fn () => view('sync.schedule'))->name('sync.schedule');
 
     // Settings
     Route::get('/settings/business', fn () => view('dashboard.page', ['pageTitle' => 'Business Settings', 'pageIcon' => '🏢']))->name('settings.business');

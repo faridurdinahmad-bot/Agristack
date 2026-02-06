@@ -191,6 +191,8 @@ $current = fn($name) => request()->routeIs($name);
                 <ul class="mt-1 ml-4 pl-4 border-l border-slate-200 dark:border-slate-600 space-y-0.5">
                     <li><a href="{{ route('app.sync.website') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.sync.website') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🌐 Sync with Website</a></li>
                     <li><a href="{{ route('app.sync.api') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.sync.api') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">🔗 API Settings</a></li>
+                    <li><a href="{{ route('app.sync.logs') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.sync.logs') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">📋 Sync Logs</a></li>
+                    <li><a href="{{ route('app.sync.schedule') }}" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm {{ $current('app.sync.schedule') ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-700/50' }}">⏰ Sync Schedule</a></li>
                 </ul>
             </details>
 
