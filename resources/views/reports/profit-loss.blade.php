@@ -11,14 +11,47 @@
     </div>
 
     <div class="rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-4">
-        <div class="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4">
-            <div class="flex items-center gap-2 flex-wrap">
-                <label for="pl_date_from" class="text-sm text-slate-600 dark:text-slate-400">From</label>
-                <input type="date" id="pl_date_from" class="rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
-                <label for="pl_date_to" class="text-sm text-slate-600 dark:text-slate-400">To</label>
-                <input type="date" id="pl_date_to" class="rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div class="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-3">
+                <div class="flex items-center gap-2">
+                    <label for="pl_date_from" class="text-sm text-slate-600 dark:text-slate-400 whitespace-nowrap">From</label>
+                    <input type="date" id="pl_date_from" class="rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
+                </div>
+                <div class="flex items-center gap-2">
+                    <label for="pl_date_to" class="text-sm text-slate-600 dark:text-slate-400 whitespace-nowrap">To</label>
+                    <input type="date" id="pl_date_to" class="rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
+                </div>
             </div>
-            <button type="button" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Apply</button>
+            <div>
+                <label for="pl_type" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Type</label>
+                <select id="pl_type" class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
+                    <option value="overall">Overall</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+            <div>
+                <label for="pl_account" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Account (Optional)</label>
+                <select id="pl_account" class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
+                    <option value="">All</option>
+                    <option value="sales">Sales</option>
+                    <option value="purchase">Purchase</option>
+                    <option value="expense">Expense</option>
+                </select>
+            </div>
+            <div>
+                <label for="pl_category" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Category (Optional)</label>
+                <select id="pl_category" class="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none">
+                    <option value="">All</option>
+                    <option value="revenue">Revenue</option>
+                    <option value="cogs">Cost of Goods</option>
+                    <option value="opex">Operating Expense</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-4">
+            <button type="button" class="px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 shadow-md transition-colors">Apply</button>
+            <button type="button" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Clear Filters</button>
         </div>
     </div>
 
