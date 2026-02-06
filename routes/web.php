@@ -112,11 +112,17 @@ Route::prefix('app')->name('app.')->group(function () {
     Route::get('/sync/schedule', fn () => view('sync.schedule'))->name('sync.schedule');
 
     // Settings
-    Route::get('/settings/business', fn () => view('dashboard.page', ['pageTitle' => 'Business Settings', 'pageIcon' => '🏢']))->name('settings.business');
-    Route::get('/settings/invoice', fn () => view('dashboard.page', ['pageTitle' => 'Invoice Settings', 'pageIcon' => '📄']))->name('settings.invoice');
-    Route::get('/settings/barcode', fn () => view('dashboard.page', ['pageTitle' => 'Barcode Settings', 'pageIcon' => '📊']))->name('settings.barcode');
-    Route::get('/settings/printers', fn () => view('dashboard.page', ['pageTitle' => 'Printers', 'pageIcon' => '🖨️']))->name('settings.printers');
-    Route::get('/settings/tax-rates', fn () => view('dashboard.page', ['pageTitle' => 'Tax Rates', 'pageIcon' => '📋']))->name('settings.tax-rates');
+    Route::get('/settings/general', fn () => view('settings.general'))->name('settings.general');
+    Route::get('/settings/business', fn () => view('settings.business'))->name('settings.business');
+    Route::get('/settings/user-roles', fn () => view('settings.user-roles'))->name('settings.user-roles');
+    Route::get('/settings/notifications', fn () => view('settings.notifications'))->name('settings.notifications');
+    Route::get('/settings/tax-invoice', fn () => view('settings.tax-invoice'))->name('settings.tax-invoice');
+    Route::get('/settings/backup-sync', fn () => view('settings.backup-sync'))->name('settings.backup-sync');
+    Route::get('/settings/appearance', fn () => view('settings.appearance'))->name('settings.appearance');
+    Route::get('/settings/invoice', fn () => redirect()->route('app.settings.tax-invoice'))->name('settings.invoice');
+    Route::get('/settings/barcode', fn () => redirect()->route('app.settings.appearance'))->name('settings.barcode');
+    Route::get('/settings/printers', fn () => redirect()->route('app.settings.appearance'))->name('settings.printers');
+    Route::get('/settings/tax-rates', fn () => redirect()->route('app.settings.tax-invoice'))->name('settings.tax-rates');
 
     // Analytics (parent redirect for mobile menu)
     Route::get('/analytics', fn () => redirect()->route('app.analytics.overview'))->name('analytics');
